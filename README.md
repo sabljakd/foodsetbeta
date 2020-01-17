@@ -8,8 +8,7 @@ Bruno Nađ
 
 ## App Desc.
 
-Web aplikacija koja omogućuje poboljšanu komunikaciju između kupca(korisnika) i  restorana. 
-Na način da korisnik dolazi u restoran i odlazi na link od aplikacije izvršava registraciju ukoliko vec nije inace se logira.  Nakon izvrsene registracije (logina) izbacuje mu izbor menija koji zeli (hrana,pice...). Korisnik u meniju moze izmjenjivati stavke (namirnice) koje ne želi ili jednostavno ne voli.  Nakon sto je korisnik odabrao sta zeli kuhar u kuhinji (naravno imamo log in kuhara i konobara) vidi popis i pocinje izradu. Kupci imaju opciju za placanje (gotovina, kartica, paypal).
+Web aplikacija koja omogućuje poboljšanu komunikaciju između kupca(korisnika) i  restorana. Korisnik u meniju moze izmjenjivati stavke (namirnice) koje ne želi ili jednostavno ne voli.  Nakon sto je korisnik odabrao sta zeli kuhar u kuhinji (naravno imamo log in kuhara i konobara) vidi popis i pocinje izradu. Kupci imaju opciju za placanje (gotovina, kartica, paypal).
 
 ## Needs to be added
 
