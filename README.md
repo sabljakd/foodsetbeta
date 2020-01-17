@@ -17,6 +17,7 @@ Na način da korisnik dolazi u restoran i odlazi na link od aplikacije izvršava
 -- Prilikom klika na dovrsavanje narudzbe -> Slanje na odabir placanja.
 -- About us page.
 -- Rjesavanje malih errora.
+-- Izbor stola.
 
 ## Project setup
 ```
