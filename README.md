@@ -12,11 +12,10 @@ Web aplikacija koja omogućuje poboljšanu komunikaciju između kupca(korisnika)
 
 ## Needs to be added
 
--- Prilikom klika na dovrsavanje narudzbe -> Slanje narudzbe u /admin/orders.
--- Prilikom klika na dovrsavanje narudzbe -> Slanje na odabir placanja.
+
 -- About us page.
 -- Rjesavanje malih errora.
--- Izbor stola.
+
 
 ## Project setup
 ```
