@@ -1,8 +1,4 @@
 import firebase from 'firebase';
-import 'firebase/firestore'
-import 'firebase/firebase-auth'
-import 'firebase/storage'
-require('firebase/firestore');
 
   // Initialize Firebase
   var config = {
@@ -15,7 +11,7 @@ require('firebase/firestore');
     appId: "1:981306447001:web:242791a338529cde755408"
   };
 
-  export const fb = firebase.initializeApp(config);
-  const db = firebase.firestore();
+  const firebaseApp = firebase.initializeApp(config);
 
-  export {db}
+
+  export default firebaseApp.firestore()

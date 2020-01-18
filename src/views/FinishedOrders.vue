@@ -10,7 +10,7 @@
               <b>Ime menija: </b>{{product.productName}}
               <b>Napomena: </b>{{product.napomena}}
             </div>
-            <button @click="check(order.id)">Check</button>
+            <button @click="posluzeno(order.id)">Posluženo</button>
         </div>
       </div>     
   </div>
@@ -33,15 +33,13 @@ export default {
       }
   },
   methods: {
-    check(id){
-      db.collection('narudzbe').doc(id).update({
-        checked: true
-      })
+    posluzeno(id){
+      db.collection("narudzbe").doc(id).delete()
     }
   },
   computed: {
     filteredOrders(){
-      return this.orders.filter(order => order.checked!==true);
+      return this.orders.filter(order => order.checked==true);
     } 
   },
 

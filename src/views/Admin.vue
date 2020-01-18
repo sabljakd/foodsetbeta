@@ -59,9 +59,21 @@
                             </router-link>
                         </li>
                         <li>
+                            <router-link to="/admin/finished-orders">
+                                
+                                <span>Gotove narudzbe</span>
+                            </router-link>
+                        </li>
+                        <li>
                             <router-link to="/admin/profile">
                                 
                                 <span>Profil</span>
+                            </router-link>
+                        </li>
+                        <li>
+                          <router-link v-if="this.email=='ljhalar@unipu.hr'" to="/admin/add-employe">
+                                
+                                <span>Dodaj zaposlenika</span>
                             </router-link>
                         </li>
                         <li>
@@ -93,7 +105,7 @@
 <script>
 // @ is an alias to /src
 import Logo from "@/components/Logo.vue";
-import {fb} from '../firebase';
+import fb from 'firebase';
 
 export default {
   name: "admin",

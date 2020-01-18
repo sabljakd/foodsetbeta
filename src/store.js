@@ -75,6 +75,8 @@ export default new Vuex.Store({
             this.commit('saveData');
     
           },
+          isprazniKosaricu(state,item){
+            state.cart=item    }
   
   
   

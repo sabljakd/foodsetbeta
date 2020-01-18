@@ -2,35 +2,45 @@
   <div class="chekout">
        <Navbar></Navbar>
 <div class="container mt-5 pt-5">
-      <div class="row">
-        <!--- <div class="col-md-9">
-                    <h4 class="py-4">Checkout page</h4>
-                     <ul>
-                        <li v-for="item in this.$store.state.cart" class="media">
-                        <img :src="item.productImage" width="80px" class="align-self-center mr-3" alt="">
-                        <div class="media-body">
-                            <h5 class="mt-0">{{item.productName}}
-
-                                <span class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
-
-                            </h5>
-                            <p class="mt-0">{{item.productPrice | currency}}</p>
-                            <p class="mt-0">Quantity : {{item.productQuantity }}</p>
-                        </div>
-                        </li>
-
-                    </ul>
+  <div class="row">
+    <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <input v-model="ime" type="text" class="form-control" placeholder="Ime">
+                    </div>
+                    <div class="col">
+                        <input v-model="prezime" type="text" class="form-control" placeholder="Prezime">
+                    </div>
                 </div>
-                 <div class="col-md-3">
-                    Total Price
-                </div>-->
+
+                <div class="row">
+                    <div class="col">
+                        <input v-model="brojKartice" type="number" class="form-control" placeholder="Broj kartice">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <select v-model="brojStola" class="custom-select">
+                          <option value="" disabled >Odaberite stol</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+  </div>
+      <div class="row">
+        
                 Ukupna cijena : {{ this.$store.getters.totalPrice | currency('HRK ') }}
 
-                    <button class="btn btn-primary mt-4">
+                    <button @click="nastaviPlacanje()" class="btn btn-primary mt-4">
                         
                             Nastavi na placanje
 
                     </button>
+                
+
             <table class="table table-borderless">
           <thead>
             <tr>
@@ -38,10 +48,11 @@
               <th scope="col">Stavke</th>
               <th scope="col">Kolicina</th>
               <th scope="col">Cijena</th>
+              <th scope="col">Napomena</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in this.$store.state.cart">
+            <tr v-for="item in this.$store.state.cart" :key="item.id">
               <td>
                 <span @click="$store.commit('removeFromCart',item)" class="remove-item">X</span>
               </td>
@@ -77,7 +88,11 @@
                   </div>
                 </div>
               </td>
-              <td>{{item.productPrice}}</td>
+              <td>{{item.productPrice}}
+              </td>
+              <td>
+                <input v-model="item.napomena" type="text" name="FirstName" value="Napomena">
+              </td>
             </tr>
           </tbody>
         </table>
@@ -87,12 +102,18 @@
 
 </template>
 <script>
+
+import db from '../firebase'
 export default {
   name: "checkout",
   props: {
   },
   data(){
       return {
+        ime:'',
+        prezime:'',
+        brojKartice:'',
+        brojStola:''
       }
   },
   methods: {
@@ -101,6 +122,24 @@ export default {
     },
     decreaseQty(id) {
         this.$store.commit('decrement', id)
+    },
+    nastaviPlacanje(){
+      db.collection('narudzbe').add({
+        narudzba: this.$store.state.cart,
+        imeGosta: this.ime,
+        prezimeGosta: this.prezime,
+        brojKartice: this.brojKartice,
+        brojStola: this.brojStola,
+        ukupnaNarudzba: this.$store.getters.totalPrice+' kn'
+      })
+        .then(() =>{
+          this.$store.commit("isprazniKosaricu", []);
+          this.ime='',
+          this.prezime='',
+          this.brojKartice='',
+          this.brojStola='',
+          this.$router.push({path: '/'})
+        })
     }
   },
   created() {}

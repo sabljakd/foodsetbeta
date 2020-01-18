@@ -30,48 +30,7 @@
 
           </ul>
 
-                 <!--  <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active pt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-                    <div class="container">
-                    <!--   <div class="row">
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input type="text" name="" v-model="profile.name" placeholder="Full name" class="form-control">
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input type="text"  v-model="profile.phone" placeholder="Phone" class="form-control">
-                          </div>
-                        </div>
-
-                          <div class="col-md-12">
-                          <div class="form-group">
-                            <input type="text"  v-model="profile.address" placeholder="Address" class="form-control">
-                          </div>
-                        </div>
-                      <div class="col-md-8">
-                          <div class="form-group">
-                            <input type="text"  v-model="profile.postCode" placeholder="Postcode" class="form-control">
-                          </div>
-                        </div>
-
-                        <div class="col-md-4">
-                          <div class="form-group">
-                              <input type="submit" @click="updateProfile" value="Save Changes" class="btn btn-primary w-100">
-                          </div>
-                        </div>
-
-
-                  </div> 
-                  </div>
-
-                </div> -->
-
-
+            
 
           <div class="tab-pane fade pt-3" id="account" role="tabpanel" aria-labelledby="account-tab">
                   <div class="container">
@@ -125,12 +84,12 @@
           </div>
         </div>
 
-  </div>
 </template>
 
 <script>
 import { VueEditor } from "vue2-editor";
-import {fb, db} from '../firebase';
+import db from '../firebase';
+import fb from 'firebase';
 
 export default {
   name: "profile",
@@ -171,7 +130,6 @@ export default {
           const auth = fb.auth();          
           auth.sendPasswordResetEmail(auth.currentUser.email).then(() =>  {
                Toast.fire({
-                type: 'success',
                 title: 'Email sent'
               })
           }).catch((error) =>  {

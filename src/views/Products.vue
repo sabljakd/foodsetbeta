@@ -23,7 +23,7 @@
 
                   <tbody>
 
-                    <tr v-for="product in products">
+                    <tr v-for="product in products" :key="product.id">
                         <td>
                           {{product.name}}
                         </td>
@@ -77,6 +77,12 @@
                     <hr>
 
                     <div class="form-group">
+                      <select v-model="product.kategorijaMenija" class="custom-select">
+                          <option value="Piće">Piće</option>
+                          <option value="Jelo">Jelo</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                       <input type="text" placeholder="Cijena menija" v-model="product.price" class="form-control">
                     </div>
 
@@ -113,7 +119,8 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-import {fb, db} from '../firebase';
+import db from '../firebase';
+import fb from 'firebase';
 
 export default {
   name: "Products",
@@ -132,7 +139,8 @@ export default {
           description:null,
           price:null,
           tags:[],
-          image: null
+          image: null,
+          kategorijaMenija:''
         },
         activeItem:null,
         modal: '',
@@ -170,6 +178,7 @@ export default {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+
           this.product.images = downloadURL;
           
         });
