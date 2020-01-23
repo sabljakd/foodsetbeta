@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import Admin from "../views/Admin.vue";
-import Overview from "../views/Overview.vue";
 import Products from "../views/Products.vue";
 import AddEmploye from "../components/AddEmploye.vue";
 import FinishedOrders from "../views/FinishedOrders.vue";
@@ -27,11 +26,7 @@ const router =  new Router({
       component: Admin,
       meta: { requiresAuth: true },
       children:[
-        {
-          path: "overview",
-          name: "overview",
-          component: Overview
-        },
+        
         {
           path: "products",
           name: "products",

@@ -18,7 +18,7 @@
                       <div class="media-body">
                         <h5 class="mt-0">{{item.productName}}
 
-                          <span class='float-right' @click="$store.commit('removeFromCart',item)">X</span>
+                          <span class='float-right' @click="$store.commit('removeFromCart',item)"><i class="far fa-trash-alt"></i></span>
                         </h5>
                         <p class="mt-0">{{item.productPrice | currency}}</p>
                         <p class="mt-0">Kolicina : {{item.productQuantity }}</p>

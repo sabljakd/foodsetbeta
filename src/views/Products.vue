@@ -68,9 +68,10 @@
                     </div>
 
                     <div class="form-group">
-                      <vue-editor v-model="product.description"></vue-editor>
+                      <input type="text" placeholder="Opis priprave menia" v-model="product.description" class="form-control">
                     </div>
                   </div>
+                  
                   <!-- product sidebar -->
                   <div class="col-md-4">
                     <h4 class="display-6">Detalji menija</h4>
@@ -118,15 +119,13 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 import db from '../firebase';
 import fb from 'firebase';
 
 export default {
   name: "Products",
-  components: {
-    VueEditor
-  },
+  
   props: {
     msg: String
   },

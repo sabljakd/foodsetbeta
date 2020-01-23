@@ -400,17 +400,12 @@
   /*----------------show sidebar button----------------*/
   #show-sidebar {
     position: fixed;
-    left: 0;
+    left: 10px;
     top: 10px;
-    border-radius: 0 4px 4px 0px;
-    width: 35px;
-    -webkit-transition: left .3s ease;
-    transition: left .3s ease;
-    -webkit-transition-delay: .3s;
-    transition-delay: .3s; }
+    border-radius: 25px 25px 25px 25px;
+    width: 50px;
+   }
 
-  .page-wrapper.toggled #show-sidebar {
-    left: -40px; }
 
   /*-----------------  page-content  ------------------*/
   .page-wrapper .page-content {
@@ -438,7 +433,7 @@
 
 
   .default-theme .sidebar-wrapper {
-    background-color: #1d1d1d; }
+    background-color: #cf6363; }
     .default-theme .sidebar-wrapper .sidebar-item {
       border-top: 1px solid #2b2b2b; }
       .default-theme .sidebar-wrapper .sidebar-item:first-child {
@@ -461,8 +456,8 @@
     .default-theme .sidebar-wrapper .sidebar-menu a:hover i,
     .default-theme .sidebar-wrapper .sidebar-menu a:hover:before,
     .default-theme .sidebar-wrapper .sidebar-menu li.active a i {
-      color: #22ff16;
-      text-shadow: 0px 0px 10px rgba(34, 255, 22, 0.5); }
+      color: #c5e21e;
+      text-shadow: 0px 0px 10px rgba(173, 204, 36, 0.5); }
     .default-theme .sidebar-wrapper .sidebar-menu ul li a i {
       background-color: #2b2b2b; }
     .default-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div {

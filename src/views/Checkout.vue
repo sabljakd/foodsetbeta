@@ -5,21 +5,20 @@
   <div class="row">
     <div class="col">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sm">
                         <input v-model="ime" type="text" class="form-control" placeholder="Ime">
                     </div>
-                    <div class="col">
+                    <div class="col-sm">
                         <input v-model="prezime" type="text" class="form-control" placeholder="Prezime">
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
+                    <div class="col-sm">
                         <input v-model="brojKartice" type="number" class="form-control" placeholder="Broj kartice">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
+
+                
+                <div class="row" style="margin-top: 10px; margin-bottom:10px">
+                    <div class="col-sm">
                         <select v-model="brojStola" class="custom-select">
                           <option value="" disabled >Odaberite stol</option>
                           <option value="1">1</option>
@@ -32,7 +31,10 @@
   </div>
       <div class="row">
         
-                Ukupna cijena : {{ this.$store.getters.totalPrice | currency('HRK ') }}
+                <a style="border-style: inset; border-color:red">Ukupna cijena : {{ this.$store.getters.totalPrice | currency('HRK ') }}</a>
+
+      </div>
+      <div class="row">
 
                     <button @click="nastaviPlacanje()" class="btn btn-primary mt-4">
                         
@@ -54,7 +56,7 @@
           <tbody>
             <tr v-for="item in this.$store.state.cart" :key="item.id">
               <td>
-                <span @click="$store.commit('removeFromCart',item)" class="remove-item">X</span>
+                <span @click="$store.commit('removeFromCart',item)" class="remove-item"><i class="far fa-trash-alt"></i></span>
               </td>
               <td>
                 <img :src="item.productImage" alt style="width:100px">
@@ -66,22 +68,15 @@
                     <span class="input-group-btn">
                       <button
                         type="button"
-                        class="btn btn-danger"
+                        class="btn btn-dark btn-sm"
                         @click="decreaseQty(item.productId)"
                       >
                         <i class="fa fa-minus"></i>
                       </button>
                     </span>
-                    <input
-                      type="text"
-                      :value="item.productQuantity"
-                      class="form-control input-number">
+                    <input type="text" :value="item.productQuantity"  style="margin-left:2px; margin-right:2px" class="form-control input-number">
                     <span class="input-group-btn">
-                      <button
-                        type="button"
-                        class="btn btn-success"
-                        @click="increaseQty(item.productId)"
-                      >
+                      <button type="button" class="btn btn-dark btn-sm" @click="increaseQty(item.productId)">
                         <i class="fa fa-plus"></i>
                       </button>
                     </span>
@@ -150,4 +145,5 @@ export default {
   width: 25%;
   margin: 40px auto;
 }
+
 </style>

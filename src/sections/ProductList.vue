@@ -1,10 +1,17 @@
 <template>
   <div class="products" id="products">
       <div class="container">
-          <h1 class="text-center p-5">Nasa Ponuda</h1>
+          <h1 class="text-center p-5" style="color:azure">Nasa Ponuda</h1>
           <div class="odabir row">
-            <button class="btn btn-light" @click.prevent="postaviKategoriju('Jelo')">Hrana</button>
-            <button class="btn btn-light" @click.prevent="postaviKategoriju('Piće')">Piće</button>
+            <div class="dropdown">
+              <button class="btn btn-light dropdown-toggle" style="margin:5px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Odaberi:
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Jelo</a>
+                <a class="dropdown-item" href="#">Piće</a>
+              </div>
+            </div>
           </div>
           <div class="row">
             
@@ -100,7 +107,7 @@ data(){
 <style scoped lang="scss">
     .products{
         margin-top: 7rem;
-        background: #f2f2f2;
+        background: #6d6c96;
         padding-bottom: 3rem;
     }
 

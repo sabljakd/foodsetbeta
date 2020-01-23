@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-   <nav class="navbar custom-nav fixed-top navbar-expand-lg navbar-light bg-light">
+   <nav class="navbar custom-nav  navbar-expand-lg navbar-light bg-light">
      <div class="container">
         <router-link class="navbar-brand" to="/">FOODSET</router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,19 +10,21 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Pocetna</router-link>
+              <router-link to="/" class="nav-link" style="color:azure">Pocetna</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/about" class="nav-link" href="#">O Nama</router-link>
+              <router-link to="/about" class="nav-link" href="#" style="color:azure">O Nama</router-link>
             </li>
             
 
           </ul>
           <form class="form-inline my-2 my-lg-0">
             
-            <a class="btn btn-outline-success my-2 my-sm-0 mx-2" data-toggle="modal" data-target="#login">Prijava zaposlenika</a>
-            <a class="btn btn-outline-info border-0 mx-2 my-2 my-sm-0" data-toggle="modal" data-target="#miniCart">
-              <i class="fas fa-cart-plus"></i>
+            <a class="btn btn-outline-success btn-lg" style="margin: 20px; color:azure" data-toggle="modal" data-target="#login">Prijava <i class="fas fa-door-open"></i></a>
+            
+            
+            <a class="btn btn-outline-success btn-lg" style="color:azure" data-toggle="modal" data-target="#miniCart">
+              <i class="fas fa-shopping-cart"></i>
             </a>
 
           </form>
@@ -51,7 +53,10 @@ export default {
     .navbar.custom-nav{
       padding-top:16px;
       padding-bottom:16px;
-      background-color: #fff !important;
+      background: #6d6c96 !important;
+    }
+    .navbar-brand{
+      color:azure;
     }
    }
 </style>

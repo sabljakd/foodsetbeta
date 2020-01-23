@@ -3,73 +3,33 @@
         <!-- Modal -->
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            
 
                 <div class="modal-body">
-
-
-
-
-                        <ul class="nav nav-fill nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Prijava</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pills-register-tab" data-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Registracija</a>
-                            </li>
-                        </ul>
 
                         <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
 
-                            <h5 class="text-center">Prijavite se</h5>
+                            <h5 class="text-center" style="color:azure">Prijavite se</h5>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email adresa</label>
+                                <label for="exampleInputEmail1" style="color:azure">Email adresa</label>
                                 <input type="email" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upisite email">
                                 
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Lozinka</label>
+                                <label for="exampleInputPassword1" style="color:azure">Lozinka</label>
                                 <input type="password" @keyup.enter="login" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Upisite lozinku">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary" @click="login">Prijavite se</button>
+                                <button class="btn btn-primary" @click="login" style="color:azure">Prijavite se</button>
                             </div>
 
                         </div>
-                        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
-
-                             <h5 class="text-center">Kreiraj novi profil</h5>
-                            <!--  <div class="form-group">
-                                <label for="name">Your name</label>
-                                <input type="text" v-model="name" class="form-control" id="name" placeholder="Your nice name">
-                            </div> -->
-                            <div class="form-group">
-                                <label for="email">Email adresa</label>
-                                <input type="email"  v-model="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Upisite email">
-                               
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Lozinka</label>
-                                <input type="password" v-model="password" class="form-control" id="password" placeholder="Upisite lozinku">
-                            </div>
-
-                                <!-- <div class="form-group">
-                                <label for="password">Ponovite lozinku</label>
-                                <input type="password" v-model="password" class="form-control" placeholder="Ponovite lozinku">
-                            </div> -->
-                            
-
-                            <div class="form-group">
-                                <button class="btn btn-primary">Registriraj se</button>
-                            </div>
+                        
                         </div>
-                        </div>
-
-
                 </div>
 
-            </div>
+            
         </div>
         </div>
 
@@ -118,4 +78,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+    .modal-body{
+    background: #6d6c96;
+    border-radius: 75px 10px 75px 10px;
+    }
+    
+    
+
 </style>

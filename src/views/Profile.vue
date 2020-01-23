@@ -87,15 +87,13 @@
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+
 import db from '../firebase';
 import fb from 'firebase';
 
 export default {
   name: "profile",
-  components: {
-    VueEditor
-  },
+  
   props: {
     msg: String
   },

@@ -1,7 +1,7 @@
 <template>
   <div class="admin">
 <div class="page-wrapper default-theme sidebar-bg bg1 toggled">
-        <a id="show-sidebar" @click="closeMenu" class="btn btn-sm btn-dark" href="#">
+        <a id="show-sidebar" @click="closeMenu" class="btn btn-primary btn-lg active" href="#">
             <i class="fas fa-bars"></i>
         </a>
         <nav id="sidebar" class="sidebar-wrapper">
@@ -35,50 +35,41 @@
                 <!-- sidebar-menu  -->
                 <div class=" sidebar-item sidebar-menu">
                     <ul>
-                        <li class="header-menu">
-                            <span>Menu</span>
-                        </li>
-                        <!--
-                        <li>
-                            <router-link to="/admin/overview">
-                                <i class="fa fa-chart-line"></i>
-                                <span>Overview</span>
-                            </router-link>
-                            
-                        </li> -->
+                        
+                        
                         <li>
                             <router-link to="/admin/products">
-                                
+                                <i class="fas fa-drumstick-bite"></i>
                                 <span>Jelovnik</span>
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/admin/orders">
-                                
+                                <i class="fas fa-exclamation-circle"></i>
                                 <span>Narudzbe</span>
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/admin/finished-orders">
-                                
+                                <i class="fas fa-check-circle"></i>
                                 <span>Gotove narudzbe</span>
                             </router-link>
                         </li>
                         <li>
                             <router-link to="/admin/profile">
-                                
+                                <i class="fas fa-users"></i>
                                 <span>Profil</span>
                             </router-link>
                         </li>
                         <li>
                           <router-link v-if="this.email=='ljhalar@unipu.hr'" to="/admin/add-employe">
-                                
+                                <i class="fas fa-folder-plus"></i>
                                 <span>Dodaj zaposlenika</span>
                             </router-link>
                         </li>
                         <li>
                             <a href="#" @click="logout()">
-                               
+                                <i class="fas fa-sign-out-alt"></i>
                                 <span>Odjavi se</span>
                             </a>
                         </li>
