@@ -221,14 +221,9 @@ export default {
         })
     },
 
-    readData(){
-          
-    },
+   
 
-    saveData(){
-
-      
-    },
+    
     addProduct(){
       
       this.$firestore.products.add(this.product);
@@ -249,9 +244,7 @@ export default {
       // Object.assign(this.$data, this.$options.data.apply(this));
     }
     },
-  created(){
-    this.readData();
-    }
+  
 };
 </script>
 
