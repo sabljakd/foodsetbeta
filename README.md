@@ -34,8 +34,6 @@ vue-carousel
 vue-firestore 
 vue-router
 vue-stripe-elements-plus
-vue2-edito
-vue2-filters 
 vuex
 babel-eslint
 eslint
