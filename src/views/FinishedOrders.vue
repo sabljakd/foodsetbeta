@@ -1,7 +1,8 @@
 <template>
   <div class="products">
+    <div><b>UKUPNO NARUDŽBI  POSLUZENO : </b>    {{count}}</div>
       <div class="container">
-        <div class="border" v-for=" order in filteredOrders" :key="order.id">
+        <div id="border" style="margin-top:10px" v-for=" order in filteredOrders" :key="order.id">
           <b>Ime gosta: </b>{{order.imeGosta}}
           <b>Prezime gosta: </b>{{order.prezimeGosta}}
           <b>Broj stola: </b>{{order.brojStola}}
@@ -10,9 +11,17 @@
               <b>Ime menija: </b>{{product.productName}}
               <b>Napomena: </b>{{product.napomena}}
             </div>
-            <button @click="posluzeno(order.id)">Posluženo</button>
+            
+            <div>
+            <b>Placanje: </b>{{order.placanjeGot}}  <!-- 1 gost jedno placanje -->
+            </div>
+            
+            <button id="primary"  @click="doznaka" style="margin-bottom:20px">Uspjesno posluzeno</button>
+           <button class="botun" @click="posluzeno(order.id)">X</button>
+           
         </div>
-      </div>     
+      </div>  
+        
   </div>
 </template>
 
@@ -24,7 +33,7 @@ export default {
   name: "Products",
   data(){
     return{
-
+        count:0
     }
   },
   firestore(){
@@ -33,17 +42,28 @@ export default {
       }
   },
   methods: {
+    doznaka(){
+      this.count++;
+      Toast.fire({
+            icon: 'success',
+            title: 'Uspjesno posluzeno!'
+          })
+      $('#product').modal('hide');
+      
+    },
+    
     posluzeno(id){
       db.collection("narudzbe").doc(id).delete()
     }
   },
-  computed: {
+  computed: {  // korisitmo kada zelimo prikazati neku modifikacijuu
     filteredOrders(){
       return this.orders.filter(order => order.checked==true);
     } 
   },
 
 };
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -58,5 +78,12 @@ export default {
 }
 .img-wrapp span.delete-img:hover{
   cursor: pointer;
+}
+.botun{
+  float:right;
+}
+#border{
+border-bottom: 5px solid #1C6EA4;
+border-radius: 13px;
 }
 </style>

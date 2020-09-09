@@ -20,9 +20,7 @@
 
               <ul class="nav nav-pills ml-3" id="myTab" role="tablist">
 
-           <!--  <li class="nav-item">
-              <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
-            </li> -->
+          
 
             <li class="nav-item">
               <a class="nav-link"  id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="false">Promjena lozinke</a>
@@ -36,53 +34,18 @@
                   <div class="container">
                       <div class="row">
 
-                          
-
-
-      
-                      
-
-                    
-                    
-
-                   <div class="col-md-6">
-                          <div class="form-group">
-                            <input type="text"  v-model="account.email" placeholder="Unesite e-mail adresu" class="form-control">
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input type="text"  v-model="account.password" placeholder="Nova lozinka" class="form-control">
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <input type="text" v-model="account.confirmPassword"  placeholder="Ponovite lozinku" class="form-control">
-                          </div>
-                        </div>
-                        
-                       
-                        <div class="col-md-4">
-                          <div class="form-group">
-                              <input type="submit" value="Spremi promjene" class="btn btn-primary w-100">
-                              </div>
-
-                
-
-                        </div>
+  
                         <div class="col-md-4">
                           <div class="form-group">
                               <input type="button" @click="resetPassword" value="Posalji na mail" class="btn btn-success w-100">
-                          </div>
                         </div>
                       </div>
+                    </div>
                   </div>
-          </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
 </template>
 
@@ -100,12 +63,7 @@ export default {
 
   data(){
     return {
-        profile: {
-          name:null,
-          phone:null,
-          address:null,
-          postcode:null
-        },
+        
         account:{
             name:null,
             email:null,
@@ -117,12 +75,7 @@ export default {
         } 
     }
   },
-  firestore(){
-      const user = fb.auth().currentUser;
-      return {
-        profile: db.collection('profiles').doc(user.uid),
-      }
-  },
+  
   methods:{
       resetPassword(){
           const auth = fb.auth();          
@@ -137,10 +90,9 @@ export default {
       updateProfile(){
           this.$firestore.profile.update(this.profile);
       },
-      uploadImage(){}
+      
   },
-  created(){
-  }
+  
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

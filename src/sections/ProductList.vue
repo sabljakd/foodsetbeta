@@ -8,25 +8,25 @@
                 Odaberi:
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Jelo</a>
-                <a class="dropdown-item" href="#">Piće</a>
+                <a class="dropdown-item" @click.prevent="postaviKategoriju('Jelo')">Jelo</a>
+                <a class="dropdown-item" @click.prevent="postaviKategoriju('Piće')">Piće</a>
               </div>
             </div>
           </div>
-          <div class="row">
+          
             
 
-              <div class="col-md-4" v-for="product in filteredProducts" :key="product.id">
-                  <div class="card product-item" style="margin: 2px">
+              <div v-for="product in filteredProducts" :key="product.id">    <!-- :key vue mora razlikovati svaku komponenttu u slucaju promjene podataka -->
+                  
                     
-                        <div class="card-body" >
-                            <div class="d-flex justify-content-between">
-                            <img width="100px" height="100px" :src="product.images" alt="Card image cap">
+                        <div class="card" style="text-align: center; margin-bottom: 5px;">
+                            
+                            <img style="margin-left: auto; margin-right: auto;" width="100px" height="100px" :src="product.images" alt="Card image cap">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <h5 class="card-title">{{ product.tag }}</h5>
                             <h5 class="card-priceS">{{ product.price | currency(' HRK', 2, { symbolOnLeft: false }) }}</h5>
 
-                          </div>
+                          
                             <p class="card-text">
                                 {{ product.description }}
 
@@ -38,10 +38,10 @@
                                 :name="product.name">
                             </add-to-cart>
                         </div>
-                    </div>
+              
               </div>
 
-          </div>
+          
       </div>
 
   </div>
@@ -73,7 +73,7 @@ data(){
   },
   created(){
      //slušamo tablicu products
-      db.collection('products')
+      db.collection('products')                    // isto kao i select * from products
       .onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
 
@@ -109,6 +109,7 @@ data(){
         margin-top: 7rem;
         background: #6d6c96;
         padding-bottom: 3rem;
+        
     }
 
     .odabir{

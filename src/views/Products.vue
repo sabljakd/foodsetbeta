@@ -79,6 +79,7 @@
 
                     <div class="form-group">
                       <select v-model="product.kategorijaMenija" class="custom-select">
+                          <option value="" disabled >Odaberite vrstu jela</option>
                           <option value="Piće">Piće</option>
                           <option value="Jelo">Jelo</option>
                         </select>
@@ -132,30 +133,29 @@ export default {
 
   data(){
     return {
-        products: [],
+        products: [],   // podatci se spremaju 
         product: {
           name:null,
           description:null,
           price:null,
-          tags:[],
-          image: null,
           kategorijaMenija:''
         },
         activeItem:null,
-        modal: '',
+        modal: '',       // sprema edit ili new
         tag: null
     }
   },
  firestore(){
       return {
-        products: db.collection('products'),
+        products: db.collection('products'),    // povezivanje s bazom // read data from firestore  
       }
-  },
+      },
+  
 
  
 
 
-  methods:{
+  methods: {
       
 
       addNew(){
@@ -182,6 +182,7 @@ export default {
           
         });
       });
+
     },
 
       updateProduct(){
@@ -192,6 +193,7 @@ export default {
           })
            $('#product').modal('hide');
     },
+
     editProduct(product){
         this.modal = 'edit';
       this.product = product;
@@ -220,6 +222,7 @@ export default {
           }
         })
     },
+  
 
    
 
@@ -238,14 +241,15 @@ export default {
           name:null,
           description:null,
           price:null,
-          tags:[],
-          image: null
+          
+          
       }
-      // Object.assign(this.$data, this.$options.data.apply(this));
-    }
+      
     },
-  
+  },
 };
+  
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

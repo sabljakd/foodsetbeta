@@ -24,7 +24,7 @@ const router =  new Router({
       path: "/admin",
       name: "admin",
       component: Admin,
-      meta: { requiresAuth: true },
+      meta: { requiresAuth: true },   // tko zeli imati pristup adminu mora biti authentificiran    
       children:[
         
         {
@@ -57,30 +57,26 @@ const router =  new Router({
     {
       path: "/checkout",
       name: "checkout",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      
       component: () =>
         import(/* webpackChunkName: "about" */ "../views/Checkout.vue")
     },
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      
       component: () =>
         import(/* webpackChunkName: "about" */ "../views/About.vue")
     }
   ]
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {       // filtriramo podatke / vue.js router
 
-  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)    // rutaj prije svega 
   const currentUser = fb.auth().currentUser
-
-  if (requiresAuth && !currentUser) {
+ 
+  if (requiresAuth && !currentUser) {              // ako trenutni user(zaposlenik admin) nije prijavljen odvedi ga na home page 
       next('/')
   } else if (requiresAuth && currentUser) {
       next()

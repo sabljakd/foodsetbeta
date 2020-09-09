@@ -4,7 +4,7 @@
         <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             
-
+                <div class="modal-content">
                 <div class="modal-body">
 
                         <div class="tab-content" id="pills-tabContent">
@@ -29,7 +29,7 @@
                         </div>
                 </div>
 
-            
+            </div>
         </div>
         </div>
 
@@ -82,7 +82,7 @@ export default {
     background: #6d6c96;
     border-radius: 75px 10px 75px 10px;
     }
-    
-    
-
+    .modal-content{
+        border-radius: 100px 100px 100px 100px;
+    }
 </style>

@@ -6,14 +6,26 @@
     <div class="col">
                 <div class="row">
                     <div class="col-sm">
-                        <input v-model="ime" type="text" class="form-control" placeholder="Ime">
+                        <input v-model="ime" type="text" class="form-control" placeholder="Ime" >
                     </div>
                     <div class="col-sm">
-                        <input v-model="prezime" type="text" class="form-control" placeholder="Prezime">
+                        <input v-model="prezime" type="text" class="form-control" placeholder="Prezime" >
                     </div>
                     <div class="col-sm">
-                        <input v-model="brojKartice" type="number" class="form-control" placeholder="Broj kartice">
+                        <input v-model="brojKartice" type="text" class="form-control" placeholder="Broj kartice">
                     </div>
+                    <div class="col-sm">
+                        <select v-model="placanjeGot" class="custom-select">
+                          <option value="" disabled >Nacin na koji placate</option>
+                          <option value="Placa Gotovinom">Platiti cu gotovinom</option>
+                          <option value="Placa Karticom">Platiti cu karticom</option>
+                        </select>
+                    </div>
+                    <div><select v-model="baksa" class="custom-select">
+                          <option value="" disabled >Dati baksu</option>
+                          <option value="da">DA</option>
+                          <option value="ne">NE</option>
+                        </select></div>
                 </div>
 
                 
@@ -21,9 +33,18 @@
                     <div class="col-sm">
                         <select v-model="brojStola" class="custom-select">
                           <option value="" disabled >Odaberite stol</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                          <option value="1">Stol: 1</option>
+                          <option value="2">Stol: 2</option>
+                          <option value="3">Stol: 3</option>
+                          <option value="4">Stol: 4</option>
+                          <option value="5">Stol: 5</option>
+                          <option value="6">Stol: 6</option>
+                          <option value="7">Stol: 7</option>
+                          <option value="8">Stol: 8</option>
+                          <option value="9">Stol: 9</option>
+                          <option value="10">Stol: 10</option>
+                          <option value="11">Stol: 11</option>
+                          <option value="12">Stol: 12</option>
                         </select>
                     </div>
                 </div>
@@ -38,7 +59,7 @@
 
                     <button @click="nastaviPlacanje()" class="btn btn-primary mt-4">
                         
-                            Nastavi na placanje
+                            Naruci!
 
                     </button>
                 
@@ -86,7 +107,8 @@
               <td>{{item.productPrice}}
               </td>
               <td>
-                <input v-model="item.napomena" type="text" name="FirstName" value="Napomena">
+                <input v-model="item.napomena" class="form-control" placeholder="Unesi napomenu" type="text" name="FirstName" value="Napomena">
+                
               </td>
             </tr>
           </tbody>
@@ -108,36 +130,45 @@ export default {
         ime:'',
         prezime:'',
         brojKartice:'',
-        brojStola:''
+        brojStola:'',
+        placanjeGot:'',
+        baksa:""
       }
   },
   methods: {
     increaseQty(id) {        
-        this.$store.commit('increment', id)
+        this.$store.commit('increment2', id)
     },
     decreaseQty(id) {
         this.$store.commit('decrement', id)
     },
     nastaviPlacanje(){
-      db.collection('narudzbe').add({
+      db.collection('narudzbe').add({     // slanje narudzbe u bazu
         narudzba: this.$store.state.cart,
         imeGosta: this.ime,
         prezimeGosta: this.prezime,
         brojKartice: this.brojKartice,
+        placanjeGot: this.placanjeGot,
+        ostavitikasu: this.baksa,
         brojStola: this.brojStola,
         ukupnaNarudzba: this.$store.getters.totalPrice+' kn'
       })
+      Toast.fire({
+            icon: 'success',
+            title: 'Narudzba uspjesna!'
+          })
         .then(() =>{
           this.$store.commit("isprazniKosaricu", []);
           this.ime='',
           this.prezime='',
           this.brojKartice='',
+          this.placanjeGot='',
           this.brojStola='',
           this.$router.push({path: '/'})
         })
     }
   },
-  created() {}
+  
 };
 </script>
 <style scoped lang="scss">

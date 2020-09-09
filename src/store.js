@@ -1,15 +1,15 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from 'vuex'                 // vuex koristimo kako bi spremili dodatne podatke // u nasem slucaju podatke iz kosarice 
 Vue.use(Vuex)
 
 let cart = window.localStorage.getItem('cart');
 
 export default new Vuex.Store({
-    state: {
-        cart: cart ? JSON.parse(cart) : [],
+    state: {             //  isto ko i data
+        cart: cart ? JSON.parse(cart) : [],       // spremamo nase podatke (podatke kosarice) // koristimo da zapamti podatke u kosarici nakon refreshanja 
     },
 
-    getters: {
+    getters: {           // isto sto i computed
         totalPrice: state => {
           let total = 0;
           state.cart.filter((item) => {
@@ -20,8 +20,8 @@ export default new Vuex.Store({
         }
       },
 
-    mutations:{
-        addToCart(state, item){
+    mutations:{           // isto sto i methods 
+        addToCart(state, item){  // prima 2 parametra state i item
           let found = state.cart.find(product => product.productId == item.productId );
           if(found){
             found.productQuantity++;
@@ -47,7 +47,21 @@ export default new Vuex.Store({
   
         },
 
-        increment(state, id){
+        increment(state, {id, unesikolicinu}){
+
+            let found = state.cart.find(product => product.productId == id );
+    
+            if(found){
+              found.productQuantity=found.productQuantity + unesikolicinu*1;
+            }else{
+              state.cart.push(item);
+    
+            }
+    
+            this.commit('saveData');
+    
+          },
+          increment2(state, id){
 
             let found = state.cart.find(product => product.productId == id );
     
@@ -62,21 +76,23 @@ export default new Vuex.Store({
     
           },
     
-          decrement(state, id){
+          decrement(state, {id, unesikolicinu}){
     
             let found = state.cart.find(product => product.productId == id );
     
             if(found){
-              found.productQuantity--;
+              found.productQuantity= found.productQuantity - unesikolicinu;
             }
-            if (found.productQuantity < 1) {
-              this.removeFromCart(state, found);          
+            if (found.productQuantity <= 0) {
+              found.productQuantity=1;          
             }
             this.commit('saveData');
     
           },
           isprazniKosaricu(state,item){
-            state.cart=item    }
+            state.cart=item    },
+
+           
   
   
   

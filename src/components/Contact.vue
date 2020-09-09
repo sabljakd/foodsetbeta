@@ -1,10 +1,9 @@
 <template>
-    <div class="logo">
-        <div class="container h-100">
-            
+    <div class="contact">
+        <div class="container h-100"> 
             <div class="col-md-7">
                 
-                    <img src="../logo.png" alt="">
+                <img src="../contact.jpg" alt="">
                 
             </div>
         </div>
@@ -13,7 +12,7 @@
 
 <script>
 export default {
-  name: "Logo",
+  name: "Contact",
   props: {
     msg: String
   }
@@ -30,6 +29,5 @@ export default {
     text-align: left;
   
   }
- 
 
 </style>

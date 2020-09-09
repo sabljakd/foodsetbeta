@@ -46,11 +46,11 @@ Vue.config.productionTip = false;
 
 let app = '';
 
-fb.auth().onAuthStateChanged(function(user) {
-
+fb.auth().onAuthStateChanged(function(user) {        // ako je user prijavljen 
+                                                      // nakon sto izademo iz admina i pokusamo se vratiti sa /admin necemo moci
   if(!app){
-    new Vue({
-      router,
+    new Vue({                              // kreiraj vue instancu
+      router,                                  // importamo zapravo index.js file
       store,
       render: h => h(App)
     }).$mount("#app");

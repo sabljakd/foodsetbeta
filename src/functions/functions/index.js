@@ -17,7 +17,7 @@ exports.createUser = functions.https.onCall((data, res) => {
       
 });
 
-exports.deleteUser = functions.https.onCall((data, res) => {
+exports.deleteUser = functions.https.onCall((data, res) => {  // oncall zove sa baze tu funkciju, moramo ubaciti nas link i proslijediti u link
     admin.auth().getUserByEmail(data.email)
     .then(function(userRecord) {
         admin.auth().deleteUser(userRecord.uid)

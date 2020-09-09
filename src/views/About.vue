@@ -1,9 +1,22 @@
 <template>
   <div class="about">
-     <Navbar></Navbar>
-   <div><h1>This is an about page</h1>
+     
+   <Contact/>
    
    
 </div> 
-  </div>
+  
 </template>
+<script>
+// @ is an alias to /src
+import Contact from "@/components/Contact.vue";
+
+
+export default {
+  name: 'about',
+  components: {
+    Contact
+
+  }
+}
+</script>

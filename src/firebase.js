@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase';     // tangiergithub https://github.com/gdg-tangier/vue-firestore
 
   // Initialize Firebase
   var config = {
